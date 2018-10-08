@@ -8,25 +8,25 @@
 int input (double* a, double* b, double* c) {
 
     assert (a != NULL && b != NULL && c != NULL);
-    char ac[256] = {};
-    char bc[256] = {};
-    char cc[256] = {};
+    char a_buffer[256] = {};
+    char b_buffer[256] = {};
+    char c_buffer[256] = {};
 
-    scanf ("%s %s %s", ac, bc, cc);
-    *a = atof (ac);
-    *b = atof (bc);
-    *c = atof (cc);
+    scanf ("%s %s %s", a_buffer, b_buffer, c_buffer);
+    *a = atof (a_buffer);
+    *b = atof (b_buffer);
+    *c = atof (c_buffer);
 
     for (int i = 0; i < 256; i++) {
-        if (! ( ( (ac[i] >= 48) && (ac[i] <= 57) || (ac[i] == '\0') || (ac[i] == '.') || (ac[i] == '-')) &&
-                ( (bc[i] >= 48) && (bc[i] <= 57) || (bc[i] == '\0') || (bc[i] == '.') || (bc[i] == '-')) &&
-                ( (cc[i] >= 48) && (cc[i] <= 57) || (cc[i] == '\0') || (cc[i] == '.') || (cc[i] == '-'))) ||
-                ( (*a == 0.000000) && (*b == 0.0) && strlen(x) == 100000) && (*c == 0.000000))) {
-            return 0;
+        if (! ( ( (a_buffer[i] >= 48) && (a_buffer[i] <= 57) || (a_buffer[i] == '\0') || (a_buffer[i] == '.') || (a_buffer[i] == '-')) &&
+                ( (b_buffer[i] >= 48) && (b_buffer[i] <= 57) || (b_buffer[i] == '\0') || (b_buffer[i] == '.') || (b_buffer[i] == '-')) &&
+                ( (c_buffer[i] >= 48) && (c_buffer[i] <= 57) || (c_buffer[i] == '\0') || (c_buffer[i] == '.') || (c_buffer[i] == '-'))) ||
+                ( (*a == 0.000000) && (*b == 0.000000) && (*c == 0.000000))) {
+            return -1;
         }
     }
 
-    return -1;
+    return 0;
 }
 
 int main() {
@@ -47,11 +47,11 @@ int main() {
                     printf ("enter 3 arguments\n");
                     if (input(&a, &b, &c) == -1)   printf ("Wrong input, try again\n");
                     else {
-                        switcher == DEFAULT
-                        returned_value = q_eq_solver (a, b, c, &root1_ptr, &root2_ptr);
-                        if (returned_value == TWO_ROOTS) printf ("Your equation has 2 roots:\n%d\n%d\n", root1, root2);
+                        switcher = DEFAULT;
+                        returned_value = q_eq_solver (a, b, c, &root1, &root2);
+                        if (returned_value == TWO_ROOTS) printf ("Your equation has 2 roots:\n%e\n%e\n", root1, root2);
                         if (returned_value == NO_ROOTS) printf ("Your equation has no roots :(\n", root1, root2);
-                        if (returned_value == ONE_ROOT) printf ("Your equation is linear, root is:\n%d\n", root1);
+                        if (returned_value == ONE_ROOT) printf ("Your equation is linear, root is:\n%e\n", root1);
                         if (returned_value == ERROR) printf ("y = %c is the answer\n", c);
                     }
                     break;
@@ -62,10 +62,9 @@ int main() {
                     printf ("enter 1 to solve new equation or 0 to exit\n");
                     scanf ("%s", buffer);
 
-                    if (buffer[0] == '1' && strlen (buffer) == 1) switcher == INPUT;
+                    if (buffer[0] == '1' && strlen (buffer) == 1) switcher = INPUT;
                     else if (buffer[0] == '0' && strlen (buffer) == 1) return 0;
                     else printf ("Wrong input, try again\n");
-
                     break;
                 }
         }
