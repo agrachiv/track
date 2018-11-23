@@ -10,9 +10,8 @@ enum indents {
     BRACE_AND_SPACE_SHIFT = 2,
 };
 
-//class akinator {
-struct akinator {
-//private:
+class akinator {
+private:
     node* tree_root_ptr;
     char* data_file_path;
 
@@ -21,9 +20,9 @@ struct akinator {
     void question_binary     (node* current_node_ptr);
     void add_new_personality (node* current_node_ptr);
     void decode (FILE* file_ptr, node* current_node_ptr);
-    ~akinator ();
-//public:
+public:
     akinator() = delete;
+    ~akinator();
     akinator(const char* new_data_file_path);
     void play();
 

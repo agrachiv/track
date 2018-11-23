@@ -11,13 +11,12 @@
 #include <stdio.h> ///////////////////////////////////////////////ubrat
 #include <string.h>
 
-//class node {
-struct node {
+class node {
 
-//private:
+private:
     char* _string;
 
-//public:
+public:
     node* right_ptr;
     node* left_ptr;
 
