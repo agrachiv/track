@@ -1,0 +1,25 @@
+\documentclass[]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{datetime}
+\usepackage{amsmath}
+%opening
+\title{Differentiator}
+\author{Andrey Agrachev}
+\begin{document}
+\maketitle
+\section{Input}
+\begin{gather*}
+f(x) = {x}^{sin(x)}
+\end{gather*}
+\section{Differentiation}
+\begin{gather*}
+\frac{df}{dx}=({x}^{sin(x)})'\\
+\frac{df}{dx}=(sin(x){x}^{(sin(x)-1)}1+{x}^{sin(x)}sin(x)ln(x))\\
+\end{gather*}
+\section{Simplifying}
+\begin{gather*}
+\frac{df}{dx}=(sin(x){x}^{(sin(x)-1)}+{x}^{sin(x)}sin(x)ln(x))
+\end{gather*}
+\end{document}
